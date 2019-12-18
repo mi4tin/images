@@ -4,6 +4,7 @@
 package images
 
 import (
+	"fmt"
 	"image"
 )
 
@@ -108,6 +109,7 @@ func Hash(img image.Image) (h []float32,
 
 // Euclidean distance threshold (squared).
 var euclDist2 = float32(numMasks) * float32(colorDiff*colorDiff) * euclCoeff
+var euclDist3 = float32(numMasks) * float32(colorDiff*colorDiff)
 
 // Similar function gives a verdict for image A and B based on their hashes and
 // sizes. The input parameters are generated with the Hash function.
@@ -154,6 +156,83 @@ func Similar(hA, hB []float32, imgSizeA, imgSizeB image.Point) bool {
 		return false
 	}
 	return true
+}
+
+
+func SimilarPlus(hA, hB []float32, imgSizeA, imgSizeB image.Point) float32 {
+
+	// Filter 1. Threshold for mismatching image proportions. Based on rescaling
+	// all images to same baseWidth and cutoff at heightThreshold.
+	xA, yA := imgSizeA.X, imgSizeA.Y
+	xB, yB := imgSizeB.X, imgSizeB.Y
+	if xA*yB*baseWidth+heightThreshold*xA*xB < xB*yA*baseWidth ||
+		xA*yB*baseWidth > xB*yA*baseWidth+heightThreshold*xA*xB {
+		fmt.Println("plus1")
+		//return 0
+	}
+
+	var euclRate float32=0
+	var euclRate1 float32=0
+
+	// Filter 2a. Euclidean distance.
+	var sum float32
+	for i := 0; i < numMasks; i++ {
+		sum += (hA[i] - hB[i]) * (hA[i] - hB[i])
+	}
+	if sum > euclDist2 {
+		fmt.Println("plus2")
+		//return 0
+	}
+
+	if sum==0{
+		euclRate=1
+	}else{
+		euclRate=euclDist3/sum
+	}
+
+	fmt.Println("euclRate:",sum,euclRate)
+
+	// Filter 2b. Euclidean distance with normalized histogram.
+
+	sum = 0.0
+	hA, hB = normalize(hA), normalize(hB)
+	for i := 0; i < numMasks; i++ {
+		sum += (hA[i] - hB[i]) * (hA[i] - hB[i])
+		//fmt.Println("i",i,sum)
+	}
+
+	if sum > euclDist2 {
+		fmt.Println("plus3")
+		//return 0
+	}
+
+	if sum==0||sum <= euclDist2{
+		euclRate1=1
+	}else{
+		euclRate1=euclDist3/sum
+		fmt.Println("euclRate11:",sum,euclRate1)
+		if euclRate1>0{
+			euclRate1=1.2
+		}
+	}
+
+	fmt.Println("euclRate1:",sum,euclRate1)
+
+	// Filter 3. Pixel brightness sign correlation test.
+	sum = 0.0
+	for i := 0; i < numMasks-1; i++ {
+		if (hA[i] < hA[i+1]) && (hB[i] < hB[i+1]) ||
+			(hA[i] == hA[i+1]) && (hB[i] == hB[i+1]) ||
+			(hA[i] > hA[i+1]) && (hB[i] > hB[i+1]) {
+			sum++
+		}
+	}
+	//if sum < float32(numMasks)*corrCoeff {
+	//	return float32(numMasks)/sum
+	//}
+	brightRate:=sum/float32(numMasks)
+	fmt.Println("brightRate",brightRate)
+	return brightRate*euclRate1
 }
 
 // normalize stretches histograms for the 3 channels of the hashes, so that
