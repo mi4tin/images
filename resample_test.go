@@ -11,7 +11,7 @@ import (
 )
 
 func TestResampleByNearest(t *testing.T) {
-	testDir := "testdata"
+	testDir := "data"
 	tables := []struct {
 		inFile     string
 		inImgSize  image.Point

@@ -210,9 +210,9 @@ func SimilarPlus(hA, hB []float32, imgSizeA, imgSizeB image.Point) float32 {
 		euclRate1=1
 	}else{
 		euclRate1=euclDist3/sum
-		fmt.Println("euclRate11:",sum,euclRate1)
-		if euclRate1>0{
-			euclRate1=1.2
+		fmt.Println("euclRate11:",euclDist3,sum,euclRate1)
+		if euclRate1>1{
+			euclRate1=0.9
 		}
 	}
 

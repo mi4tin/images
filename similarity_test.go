@@ -92,9 +92,9 @@ func TestSimilar(t *testing.T) {
 
 
 func TestSimilarPlus(t *testing.T) {
-	testDir := "testdata"
+	testDir := "data"
 	imgFiles := []string{
-		"11.jpg", "12.jpg"}
+		"icon1.png", "icon2.png"}
 	hashes := make([][]float32, len(imgFiles))
 	imgSizeAll := make([]image.Point, len(imgFiles))
 	for i := range imgFiles {
