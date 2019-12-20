@@ -30,6 +30,9 @@ const (
 	baseWidth = 100
 	// Threshold of height pixels for images rescaled to baseWidth.
 	heightThreshold = 10
+
+	//调节率
+	adjustRate=0.94
 )
 
 // Masks generates masks, each of which will be used to calculate an image hash.
@@ -212,7 +215,7 @@ func SimilarPlus(hA, hB []float32, imgSizeA, imgSizeB image.Point) float32 {
 		euclRate1=euclDist3/sum
 		fmt.Println("euclRate11:",euclDist3,sum,euclRate1)
 		if euclRate1>1{
-			euclRate1=0.9
+			euclRate1=adjustRate
 		}
 	}
 

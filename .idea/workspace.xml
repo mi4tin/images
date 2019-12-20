@@ -2,30 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b62555e8-9750-46e2-94b5-b56216cacb21" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/icon1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/icon2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simiarity.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resample_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/resample_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simiarity.py" beforeDir="false" afterPath="$PROJECT_DIR$/simiarity.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/similarity.go" beforeDir="false" afterPath="$PROJECT_DIR$/similarity.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/similarity_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/similarity_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/distorted.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/flipped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/large.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/nearest100x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/nearest533x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/original.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/small.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
