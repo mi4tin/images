@@ -33,6 +33,9 @@ const (
 
 	//调节率
 	adjustRate=0.94
+
+	//调节率
+	similaritySameRate=0.997
 )
 
 // Masks generates masks, each of which will be used to calculate an image hash.
@@ -235,7 +238,11 @@ func SimilarPlus(hA, hB []float32, imgSizeA, imgSizeB image.Point) float32 {
 	//}
 	brightRate:=sum/float32(numMasks)
 	fmt.Println("brightRate",brightRate)
-	return brightRate*euclRate1
+	similarRate:=brightRate*euclRate1
+	if similarRate>=similaritySameRate{
+		similarRate=1
+	}
+	return similarRate
 }
 
 // normalize stretches histograms for the 3 channels of the hashes, so that

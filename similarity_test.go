@@ -96,7 +96,7 @@ func TestSimilarPlus(t *testing.T) {
 	//imgFiles := []string{
 	//	"mm.jpg", "mf.jpg"}
 	imgFiles := []string{
-		"icon1.png", "icon2.png"}
+		"icon2.png", "icon2.png"}
 	hashes := make([][]float32, len(imgFiles))
 	imgSizeAll := make([]image.Point, len(imgFiles))
 	for i := range imgFiles {
